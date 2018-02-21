@@ -16,9 +16,6 @@ game = Game.new(player)
 
 # interface = Interface.new(game)
 
-game.player.view_info
-game.dealer.view_info(true)
-
-# while game.in_progress?
-  
-# end
+while game.in_progress?
+  game.next_turn
+end

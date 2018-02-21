@@ -5,7 +5,6 @@ class Deck
   attr_reader :cards
 
   def initialize
-    @cards = []
     @cards = build_deck.shuffle
   end
 
@@ -18,12 +17,12 @@ class Deck
   attr_writer :cards
 
   def build_deck
+    cards = []
     SUITS.each do |suit|
       VALUES.each do |value|
         cards << Card.new(value, suit)
       end
     end
-
     cards
   end
 

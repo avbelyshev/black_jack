@@ -28,9 +28,9 @@ class Player
   end
 
   def view_info(hide = false)
-    puts "Игрок: #{name},\nСчет: #{score},\nОстаток средст: #{bank}\n"
+    puts "Игрок: #{name}\nСчет: #{score}\nОстаток средст: #{bank}\n"
     cards_list = ""
-    cards.each { |card| cards_list += hide ? " **" : "#{card}" }
+    cards.each { |card| cards_list += hide ? " **" : " #{card}" }
     puts "Карты: #{cards_list}"
   end
 
