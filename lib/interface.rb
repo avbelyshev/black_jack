@@ -27,7 +27,7 @@ class Interface
 
   def get_player_choice
     puts "Ваши действия:\n"
-    PLAYER_ACTIONS.each.with_index(1) { |num, action| puts "#{num}. #{action}" }
+    PLAYER_ACTIONS.each.with_index(1) { |action, num| puts "#{num}. #{action}" }
     gets.to_i - 1
   end
 
