@@ -1,4 +1,7 @@
 class Player
+  MAX_SCORE = 21
+  SKIP_SCORE = 17
+
   attr_accessor :name, :cards
   attr_reader :bank
 
@@ -20,18 +23,23 @@ class Player
     self.bank -= amount
   end
 
+  def zero_cards
+    self.cards = []
+  end
+
   def score
     score = 0
-    cards.each { |card| score += card.cost }
+    cards.each { |card| score += score > 10 ? card.ace_cost : card.cost}
 
     score
   end
 
-  def view_info(hide = false)
-    puts "Игрок: #{name}\nСчет: #{score}\nОстаток средст: #{bank}\n"
-    cards_list = ""
-    cards.each { |card| cards_list += hide ? " **" : " #{card}" }
-    puts "Карты: #{cards_list}"
+  def score_overage?
+    score > MAX_SCORE
+  end
+
+  def score_for_skip?
+    score > SKIP_SCORE
   end
 
   protected

@@ -14,8 +14,16 @@ player = Player.new(player_name)
 
 game = Game.new(player)
 
-# interface = Interface.new(game)
+interface = Interface.new(game)
 
 while game.in_progress?
-  game.next_turn
+  interface.print_game_status(game)
+  if game.player_turn
+    game.next_player_turn(interface.get_player_choice)
+  else
+    game.next_dealer_turn
+  end
+  interface.print_game_status(game)
+
+  interface.next_game_request if game.finished?
 end
